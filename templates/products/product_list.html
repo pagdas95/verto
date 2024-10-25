@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}NFC Shop - Our Shop{% endblock %}
+
+{% block content %}
+<!-- Begin Main Content Area -->
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="{% static 'images/breadcrumb/bg/1-1-1919x388.jpg' %}">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h2 class="breadcrumb-heading">Shop</h2>
+                        <ul>
+                            <li>
+                                <a href="{% url 'index' %}">Home</a>
+                            </li>
+                            <li>Shop Default</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shop-area section-space-y-axis-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-4 order-2 order-lg-1 pt-5 pt-lg-0">
+                    <div class="sidebar-area">
+                        <div class="widgets-searchbox">
+                            <form id="widgets-searchbox" action="{% url 'product_list' %}" method="get">
+                                <input class="input-field" type="text" name="q" placeholder="Search" value="{{ request.GET.q }}">
+                                <button class="widgets-searchbox-btn" type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <div class="widgets-area">
+                            <div class="widgets-item pt-0">
+                                <h2 class="widgets-title mb-4">Categories</h2>
+                                <ul class="widgets-category">
+                                    {% for category in categories %}
+                                    <li>
+                                        <a href="{% url 'category_product_list' slug=category.slug %}">
+                                            <i class="fa fa-chevron-right"></i>
+                                            {{ category.name }} <span>({{ category.products.count }})</span>
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="widgets-item">
+                                <h2 class="widgets-title mb-4">Product Tags</h2>
+                                <ul class="widgets-tag">
+                                    {% for tag in product_tags %}
+                                    <li>
+                                        <a href="{% url 'product_list' %}?tag={{ tag.slug }}" {% if tag.slug == current_tag %}class="active"{% endif %}>
+                                            {{ tag.name }}
+                                        </a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-8 order-1 order-lg-2">
+                    <div class="product-topbar">
+                        <ul>
+                            <li class="page-count">
+                                Showing {{ page_obj.start_index }}-{{ page_obj.end_index }} of {{ paginator.count }} results
+                            </li>
+                            <li class="short">
+                                <select class="nice-select" onchange="location = this.value;">
+                                    <option value="{% url 'product_list' %}?orderby=menu_order" {% if current_ordering == 'menu_order' %}selected{% endif %}>Sort by Default</option>
+                                    <option value="{% url 'product_list' %}?orderby=popularity" {% if current_ordering == 'popularity' %}selected{% endif %}>Sort by Popularity</option>
+                                    <option value="{% url 'product_list' %}?orderby=rating" {% if current_ordering == 'rating' %}selected{% endif %}>Sort by Rated</option>
+                                    <option value="{% url 'product_list' %}?orderby=date" {% if current_ordering == 'date' %}selected{% endif %}>Sort by Latest</option>
+                                    <option value="{% url 'product_list' %}?orderby=price-desc" {% if current_ordering == 'price-desc' %}selected{% endif %}>Sort by Price: High to Low</option>
+                                    <option value="{% url 'product_list' %}?orderby=price" {% if current_ordering == 'price' %}selected{% endif %}>Sort by Price: Low to High</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="grid-view" role="tabpanel" aria-labelledby="grid-view-tab">
+                            <div class="product-grid-view row g-y-20">
+                                {% for product in products %}
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="product-item">
+                                        <div class="product-img">
+                                            <a href="{% url 'product_detail' slug=product.slug %}">
+                                                <img class="primary-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                                {% if product.images.exists %}
+                                                <img class="secondary-img" src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                                                {% endif %}
+                                            </a>
+                                            <div class="product-add-action">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                            <i class="pe-7s-like"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                        <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                            <i class="pe-7s-look"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                            <i class="pe-7s-cart"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <a class="product-name" href="{% url 'product_detail' slug=product.slug %}">{{ product.name }}</a>
+                                            <div class="price-box pb-1">
+                                                <span class="new-price">${{ product.discounted_price }}</span>
+                                            </div>
+                                            <div class="rating-box">
+                                                <ul>
+                                                    {% for i in "12345"|make_list %}
+                                                        {% if forloop.counter <= product.average_rating %}
+                                                            <li><i class="fa fa-star"></i></li>
+                                                        {% elif forloop.counter <= product.average_rating|add:0.5 %}
+                                                            <li><i class="fa fa-star-half-o"></i></li>
+                                                        {% else %}
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% empty %}
+                                <div class="col-12">
+                                    No products found{% if search_query %} for "{{ search_query }}"{% endif %}.
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% if is_paginated %}
+                    <div class="pagination-area">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center">
+                                {% if page_obj.has_previous %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if request.GET.orderby %}&orderby={{ request.GET.orderby }}{% endif %}" aria-label="Previous">&laquo;</a>
+                                    </li>
+                                {% endif %}
+                                
+                                {% for num in page_obj.paginator.page_range %}
+                                    {% if page_obj.number == num %}
+                                        <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+                                    {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                        <li class="page-item"><a class="page-link" href="?page={{ num }}{% if request.GET.orderby %}&orderby={{ request.GET.orderby }}{% endif %}">{{ num }}</a></li>
+                                    {% endif %}
+                                {% endfor %}
+                                
+                                {% if page_obj.has_next %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page={{ page_obj.next_page_number }}{% if request.GET.orderby %}&orderby={{ request.GET.orderby }}{% endif %}" aria-label="Next">&raquo;</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- Main Content Area End Here -->
+{% endblock %}

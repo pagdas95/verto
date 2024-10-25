@@ -1,0 +1,334 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pronia - Plant Store Bootstrap 5 Template</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Pronia plant store bootstrap 5 template is an awesome website template for any home plant shop.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}" />
+
+    <!-- CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/Pe-icon-7-stroke.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/ion.rangeSlider.min.css' %}" />
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+
+</head>
+
+<body>
+    <div class="preloader-activate preloader-active open_tm_preloader">
+        <div class="preloader-area-wrap">
+            <div class="spinner d-flex justify-content-center align-items-center h-100">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <div class="main-wrapper">
+
+        <!-- Begin Main Header Area -->
+        <header class="main-header-area">
+            <!-- Header Top -->
+            <div class="header-top bg-pronia-primary d-none d-lg-block">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <div class="header-top-left">
+                                <span class="pronia-offer">Recycle products slogan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Header Middle -->
+            <div class="header-middle py-30">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="header-middle-wrap position-relative">
+                                <div class="header-contact d-none d-lg-flex">
+                                    <i class="pe-7s-call"></i>
+                                    <a href="tel://+00-123-456-789">+00 123 456 789</a>
+                                </div>
+        
+                                <a href="{% url 'index' %}" class="header-logo">
+                                    <img src="{% static 'assets/images/logo/dark.png' %}" alt="Header Logo">
+                                </a>
+        
+                                <div class="header-right">
+                                    <ul>
+                                        <li>
+                                            <a href="#" class="mobile-menu_btn toolbar-btn pl-0">
+                                                <i class="pe-7s-menu"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Header Bottom / Navigation -->
+            <div class="header-bottom d-none d-lg-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="main-menu position-relative">
+                                <nav>
+                                    <ul>
+                                        <li><a href="{% url 'index' %}">Home</a></li>
+                                        <li><a href="#">Products</a>
+                                            <ul class="sub-menu">
+                                                {% for category in categories %}
+                                                    <li><a href="{% url 'category_product_list' category.slug %}">{{ category.name }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                        <li><a href="{% url 'about' %}">About Us</a></li>
+                                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Header Sticky -->
+            <div class="header-sticky py-4 py-lg-0">
+                <div class="container">
+                    <div class="header-nav position-relative">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3 col-6">
+                                <a href="{% url 'index' %}" class="header-logo">
+                                    <img src="{% static 'assets/images/logo/dark.png' %}" alt="Header Logo">
+                                </a>
+                            </div>
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <div class="main-menu">
+                                    <nav>
+                                        <ul>
+                                            <li><a href="{% url 'index' %}">Home</a></li>
+                                            <li><a href="#">Products</a>
+                                                <ul class="sub-menu">
+                                                    {% for category in categories %}
+                                                        <li><a href="{% url 'category_product_list' category.slug %}">{{ category.name }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                            <li><a href="{% url 'about' %}">About Us</a></li>
+                                            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6">
+                                <div class="header-right">
+                                    <ul>
+                                        <li>
+                                            <a href="#" class="mobile-menu_btn toolbar-btn pl-0">
+                                                <i class="pe-7s-menu"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="mobile-menu_wrapper">
+            <div class="offcanvas-body">
+                <div class="inner-body">
+                    <div class="offcanvas-top">
+                        <a href="#" class="button-close"><i class="pe-7s-close"></i></a>
+                    </div>
+                    <div class="header-contact offcanvas-contact">
+                        <i class="pe-7s-call"></i>
+                        <a href="tel://+00-123-456-789">+00 123 456 789</a>
+                    </div>
+                    <div class="offcanvas-menu_area">
+                        <nav class="offcanvas-navigation">
+                            <ul class="mobile-menu">
+                                <li><a href="{% url 'index' %}"><span class="mm-text">Home</span></a></li>
+                                <li class="menu-item-has-children"><a href="#"><span class="mm-text">Products</span></a>
+                                    <ul class="sub-menu">
+                                        {% for category in categories %}
+                                            <li><a href="{% url 'category_product_list' category.slug %}"><span class="mm-text">{{ category.name }}</span></a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'about' %}"><span class="mm-text">About Us</span></a></li>
+                                <li><a href="{% url 'contact' %}"><span class="mm-text">Contact Us</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Header Area End Here -->
+
+
+        {% block content %}
+        <!-- Content goes here -->
+        {% endblock content %}
+        
+<!-- Begin Footer Area -->
+<footer class="footer-area" data-bg-image="{% static 'assets/images/footer/bg/1-1920x465.jpg' %}">
+    <div class="footer-top section-space-top-100 pb-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="footer-widget-item">
+                        <div class="footer-widget-logo">
+                            <a href="{% url 'index' %}">
+                                <img src="{% static 'assets/images/logo/dark.png' %}" alt="Logo">
+                            </a>
+                        </div>
+                        <p class="footer-widget-desc">Lorem ipsum dolor sit amet, consec adipisl elit, sed do eiusmod tempor
+                            <br>
+                            incidio ut labore et dolore magna.
+                        </p>
+                        <div class="social-link with-border">
+                            <ul>
+                                <li>
+                                    <a href="#" data-tippy="Facebook" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-tippy="Twitter" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-tippy="Pinterest" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                        <i class="fa fa-pinterest"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-tippy="Dribbble" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                        <i class="fa fa-dribbble"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 pt-40">
+                    <div class="footer-widget-item">
+                        <h3 class="footer-widget-title">Useful Links</h3>
+                        <ul class="footer-widget-list-item">
+                            <li><a href="#">About NFC Showcase</a></li>
+                            <li><a href="#">How to shop</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="{% url 'contact' %}">Contact us</a></li>
+                            <li><a href="#">Log in</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 pt-40">
+                    <div class="footer-widget-item">
+                        <h3 class="footer-widget-title">My Account</h3>
+                        <ul class="footer-widget-list-item">
+                            <li><a href="#">Sign In</a></li>
+                            <li><a href="#">View Cart</a></li>
+                            <li><a href="#">My Wishlist</a></li>
+                            <li><a href="#">Track My Order</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 pt-40">
+                    <div class="footer-widget-item">
+                        <h3 class="footer-widget-title">Our Service</h3>
+                        <ul class="footer-widget-list-item">
+                            <li><a href="#">Payment Methods</a></li>
+                            <li><a href="#">Money Guarantee!</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 pt-40">
+                    <div class="footer-contact-info">
+                        <h3 class="footer-widget-title">Got Question? Call Us</h3>
+                        <a class="number" href="tel://123-456-789">123 456 789</a>
+                        <div class="address">
+                            <ul>
+                                <li>Your Address Goes Here</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <a href="#">
+                            <img src="{% static 'assets/images/payment/1.png' %}" alt="Payment Method">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright">
+                        <span class="copyright-text">© {% now "Y" %} NFC Showcase Made with <i class="fa fa-heart text-danger"></i> by
+                            <a href="https://hasthemes.com/" rel="noopener" target="_blank">HasThemes</a> 
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Area End Here -->
+
+<!-- Begin Scroll To Top -->
+<a class="scroll-to-top" href="">
+    <i class="fa fa-angle-double-up"></i>
+</a>
+<!-- Scroll To Top End Here -->
+
+<!-- Global Vendor, plugins JS -->
+<!-- JS Files
+============================================ -->
+<script src="{% static 'assets/js/vendor/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/jquery-migrate-3.3.2.min.js' %}"></script>
+<script src="{% static 'assets/js/vendor/jquery.waypoints.js' %}"></script>
+<script src="{% static 'assets/js/vendor/modernizr-3.11.2.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.nice-select.js' %}"></script>
+<script src="{% static 'assets/js/plugins/parallax.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/tippy.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/ion.rangeSlider.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins/mailchimp-ajax.js' %}"></script>
+<script src="{% static 'assets/js/plugins/jquery.counterup.js' %}"></script>
+
+<!--Main JS (Common Activation Codes)-->
+<script src="{% static 'assets/js/main.js' %}"></script>

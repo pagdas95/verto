@@ -1,0 +1,368 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} - NFC Shop{% endblock %}
+
+{% block content %}
+<main class="main-content">
+    <div class="breadcrumb-area breadcrumb-height" data-bg-image="{% static 'images/breadcrumb/bg/1-1-1919x388.jpg' %}">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-item">
+                        <h2 class="breadcrumb-heading">{{ product.name }}</h2>
+                        <ul>
+                            <li><a href="{% url 'index' %}">Home</a></li>
+                            <li><a href="{% url 'product_list' %}">Shop</a></li>
+                            <li>{{ product.name }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="single-product-area section-space-top-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="single-product-img">
+                        <div class="swiper-container single-product-slider">
+                            <div class="swiper-wrapper">
+                                {% for image in product.images.all %}
+                                <div class="swiper-slide">
+                                    <a href="{{ image.image.url }}" class="single-img gallery-popup">
+                                        <img class="img-full" src="{{ image.image.url }}" alt="{{ product.name }}">
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="thumbs-arrow-holder">
+                            <div class="swiper-container single-product-thumbs">
+                                <div class="swiper-wrapper">
+                                    {% for image in product.images.all %}
+                                    <a href="javascript:void(0);" class="swiper-slide">
+                                        <img class="img-full" src="{{ image.image.url }}" alt="{{ product.name }} Thumbnail">
+                                    </a>
+                                    {% endfor %}
+                                </div>
+                                <div class="thumbs-button-wrap d-none d-md-block">
+                                    <div class="thumbs-button-prev">
+                                        <i class="pe-7s-angle-left"></i>
+                                    </div>
+                                    <div class="thumbs-button-next">
+                                        <i class="pe-7s-angle-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 pt-5 pt-lg-0">
+                    <div class="single-product-content">
+                        <h2 class="title">{{ product.name }}</h2>
+                        <div class="price-box">
+                            <span class="new-price">${{ product.discounted_price }}</span>
+                            {% if product.discount_percentage > 0 %}
+                            <span class="old-price">${{ product.price }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="rating-box-wrap pb-4">
+                            <div class="rating-box">
+                                {% for i in "12345"|make_list %}
+                                    {% if forloop.counter <= product.average_rating %}
+                                        <i class="fa fa-star"></i>
+                                    {% elif forloop.counter <= product.average_rating|add:0.5 %}
+                                        <i class="fa fa-star-half-o"></i>
+                                    {% else %}
+                                        <i class="fa fa-star-o"></i>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="review-status">
+                                <a href="#reviews">({{ product.reviews.count }} Review{% if product.reviews.count != 1 %}s{% endif %})</a>
+                            </div>
+                        </div>
+                        <p class="short-desc">{{ product.description }}</p>
+                        <ul class="quantity-with-btn">
+                            <li class="add-to-cart">
+                                <a class="btn btn-custom-size lg-size btn-pronia-primary" href="#">Message us</a>
+                            </li>
+                        </ul>
+                        <ul class="service-item-wrap">
+                            <li class="service-item">
+                                <div class="service-img">
+                                    <img src="{% static 'images/shipping/icon/icons8-eco-friendly-96.png' %}" alt="Shipping Icon">
+                                </div>
+                                <div class="service-content">
+                                    <span class="title">Eco <br> Friendly</span>
+                                </div>
+                            </li>
+                            <li class="service-item">
+                                <div class="service-img">
+                                    <img src="{% static 'images/shipping/icon/icons8-recycle-96.png' %}" alt="Shipping Icon">
+                                </div>
+                                <div class="service-content">
+                                    <span class="title">Circular <br> Economy</span>
+                                </div>
+                            </li>
+                            <li class="service-item">
+                                <div class="service-img">
+                                    <img src="{% static 'images/shipping/icon/icons8-innovation-96.png' %}" alt="Shipping Icon">
+                                </div>
+                                <div class="service-content">
+                                    <span class="title">Innovative <br> Product</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="product-category">
+                            <span class="title">SKU:</span>
+                            <ul>
+                                <li>
+                                    <a href="javascript:void(0);">{{ product.id }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product-category">
+                            <span class="title">Categories :</span>
+                            <ul>
+                                <li>
+                                    <a href="{% url 'category_product_list' slug=product.category.slug %}">{{ product.category.name }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product-category product-tags">
+                            <span class="title">Tags :</span>
+                            <ul>
+                                {% for tag in product.tags.all %}
+                                <li>
+                                    <a href="{% url 'product_list' %}?tag={{ tag.slug }}">{{ tag.name }}</a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-tab-area section-space-top-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="nav product-tab-nav tab-style-2 pt-0" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="active tab-btn" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">
+                                Description
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="tab-btn" id="specification-tab" data-bs-toggle="tab" href="#specification" role="tab" aria-controls="specification" aria-selected="false">
+                                Specification
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="tab-btn" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">
+                                Reviews({{ product.reviews.count }})
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content product-tab-content">
+                        <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                            <div class="product-description-body">
+                                {{ product.long_description|safe }}
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="specification" role="tabpanel" aria-labelledby="specification-tab">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    {% for key, value in product.specs.items %}
+                                    <tr>
+                                        <th>{{ key }}</th>
+                                        <td>{{ value }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                            <div class="product-review-body">
+                                <div class="blog-comment mt-0">
+                                    <h4 class="heading">Reviews ({{ product.reviews.count }})</h4>
+                                    {% for review in product.reviews.all %}
+                                    <div class="blog-comment-item">
+
+                                        <div class="blog-comment-content">
+                                            <div class="user-meta">
+                                                <h2 class="user-name">{{ review.name }}</h2>
+                                                <span class="date">{{ review.created_at|date:"d F Y" }}</span>
+                                            </div>
+                                            <p class="user-comment">{{ review.content }}</p>
+                                            <div class="rating-box">
+                                                {% for i in "12345"|make_list %}
+                                                    {% if forloop.counter <= review.rating %}
+                                                        <i class="fa fa-star"></i>
+                                                    {% else %}
+                                                        <i class="fa fa-star-o"></i>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% empty %}
+                                    <p>No reviews yet.</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="feedback-area">
+                                    <h2 class="heading">Add a review</h2>
+                                    <form class="feedback-form" action="{% url 'add_review' slug=product.slug %}" method="post">
+                                        {% csrf_token %}
+                                        <div class="group-input">
+                                            <div class="form-field me-md-30 mb-30 mb-md-0">
+                                                <input type="text" name="name" placeholder="Your Name*" class="input-field" required>
+                                            </div>
+                                            <div class="form-field">
+                                                <input type="email" name="email" placeholder="Your Email*" class="input-field" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-field mt-30">
+                                            <select name="rating" class="input-field" required>
+                                                <option value="">Select Rating*</option>
+                                                <option value="5">5 Stars</option>
+                                                <option value="4">4 Stars</option>
+                                                <option value="3">3 Stars</option>
+                                                <option value="2">2 Stars</option>
+                                                <option value="1">1 Star</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-field mt-30">
+                                            <textarea name="content" placeholder="Your Review*" class="textarea-field" required></textarea>
+                                        </div>
+                                        <div class="button-wrap pt-5">
+                                            <button type="submit" class="btn btn-custom-size xl-size btn-pronia-primary" name="submit">Submit Review</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+    <div class="product-area section-space-y-axis-90">
+        <div class="container">
+            <div class="row">
+                <div class="section-title-wrap without-tab">
+                    <h2 class="section-title">Related Products</h2>
+                    <p class="section-desc">Products you might also like based on your current selection.</p>
+                </div>
+                <div class="col-lg-12">
+                    <div class="swiper-container product-slider">
+                        <div class="swiper-wrapper">
+                            {% for related_product in related_products %}
+                            <div class="swiper-slide product-item">
+                                <div class="product-img">
+                                    <a href="{% url 'product_detail' slug=related_product.slug %}">
+                                        <img class="primary-img" src="{{ related_product.image.url }}" alt="{{ related_product.name }}">
+                                        {% if related_product.images.count > 1 %}
+                                        <img class="secondary-img" src="{{ related_product.images.all.1.image.url }}" alt="{{ related_product.name }}">
+                                        {% endif %}
+                                    </a>
+                                    <div class="product-add-action">
+                                        <ul>
+                                            <li>
+                                                <a href="#" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                    <i class="pe-7s-like"></i>
+                                                </a>
+                                            </li>
+                                            <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                    <i class="pe-7s-look"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                    <i class="pe-7s-cart"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="product-content">
+                                    <a class="product-name" href="{% url 'product_detail' slug=related_product.slug %}">{{ related_product.name }}</a>
+                                    <div class="price-box pb-1">
+                                        <span class="new-price">${{ related_product.discounted_price }}</span>
+                                    </div>
+                                    <div class="rating-box">
+                                        <ul>
+                                            {% for i in "12345"|make_list %}
+                                                {% if forloop.counter <= related_product.average_rating %}
+                                                    <i class="fa fa-star"></i>
+                                                {% elif forloop.counter <= related_product.average_rating|add:0.5 %}
+                                                    <i class="fa fa-star-half-o"></i>
+                                                {% else %}
+                                                    <i class="fa fa-star-o"></i>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Initialize Swiper for product images
+    var galleryThumbs = new Swiper('.single-product-thumbs', {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+        navigation: {
+            nextEl: '.thumbs-button-next',
+            prevEl: '.thumbs-button-prev',
+        },
+    });
+    var galleryTop = new Swiper('.single-product-slider', {
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        thumbs: {
+            swiper: galleryThumbs
+        }
+    });
+
+    // Initialize Swiper for related products
+    var relatedProductsSlider = new Swiper('.product-slider', {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 1,
+            },
+            480: {
+                slidesPerView: 2,
+            },
+            768: {
+                slidesPerView: 3,
+            },
+            992: {
+                slidesPerView: 4,
+            }
+        }
+    });
+</script>
+{% endblock %}

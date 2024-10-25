@@ -1,0 +1,322 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}NFC Showcase{% endblock %}</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="NFC Showcase: Your one-stop shop for NFC products and solutions.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}" />
+
+    <!-- CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/Pe-icon-7-stroke.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/ion.rangeSlider.min.css' %}" />
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <div class="preloader-activate preloader-active open_tm_preloader">
+        <div class="preloader-area-wrap">
+            <div class="spinner d-flex justify-content-center align-items-center h-100">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <div class="main-wrapper">
+
+        <!-- Begin Main Header Area -->
+        <header class="main-header-area">
+            <!-- <div class="header-top bg-pronia-primary d-none d-lg-block">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-6">
+                            <div class="header-top-left">
+                                <span class="pronia-offer">Recycle products slogan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="header-middle py-30">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-12">
+                            <div class="header-middle-wrap position-relative">
+
+                                <a href="{% url 'index' %}" class="header-logo">
+                                    <img src="{% static 'images/logo/vertologo.png' %}" style="max-width: 50%;" alt="Header Logo">
+                                </a>
+
+                                <div class="header-right">
+                                    <div class="header-contact d-none d-lg-flex">
+                                        <i class="pe-7s-call"></i>
+                                        <a href="tel://+00-123-456-789">+00 123 456 789</a>
+                                    </div>
+    
+                                    <ul>
+                                        <li class="mobile-menu_wrap d-block d-lg-none">
+                                            <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">
+                                                <i class="pe-7s-menu"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom d-none d-lg-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="main-menu position-relative">
+                                <nav class="main-nav">
+                                    <ul>
+                                        <li><a href="{% url 'index' %}">Home</a></li>
+                                        <li class="drop-holder">
+                                            <a href="{% url 'product_list' %}">Products</a>
+                                            <ul class="drop-menu">
+                                                {% for category in categories %}
+                                                <li><a href="{% url 'category_product_list' category.slug %}">{{ category.name }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">About Us</a></li>
+                                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-sticky py-4 py-lg-0">
+                <div class="container">
+                    <div class="header-nav position-relative">
+                        <div class="row align-items-center">
+                            <div class="col-lg-3 col-6">
+                                <a href="{% url 'index' %}" class="header-logo">
+                                    <img src="{% static 'images/logo/vertologo.png' %}" style="max-width: 30%;" alt="Header Logo">
+                                </a>
+                            </div>
+                            <div class="col-lg-6 d-none d-lg-block">
+                                <div class="main-menu">
+                                    <nav class="main-nav">
+                                        <ul>
+                                            <li><a href="{% url 'index' %}">Home</a></li>
+                                            <li class="drop-holder">
+                                                <a href="#">Products</a>
+                                                <ul class="drop-menu">
+                                                    {% for category in categories %}
+                                                    <li><a href="{% url 'category_product_list' category.slug %}">{{ category.name }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">About Us</a></li>
+                                            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-6">
+                                <div class="header-right">
+                                    <ul>
+                                        <li class="mobile-menu_wrap d-block d-lg-none">
+                                            <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">
+                                                <i class="pe-7s-menu"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu_wrapper" id="mobileMenu">
+                <div class="offcanvas-body">
+                    <div class="inner-body">
+                        <div class="offcanvas-top">
+                            <a href="#" class="button-close"><i class="pe-7s-close"></i></a>
+                        </div>
+                        <div class="header-contact offcanvas-contact">
+                            <i class="pe-7s-call"></i>
+                            <a href="tel://+00-123-456-789">+00 123 456 789</a>
+                        </div>
+                        <div class="offcanvas-menu_area">
+                            <nav class="offcanvas-navigation">
+                                <ul class="mobile-menu">
+                                    <li><a href="{% url 'index' %}"><span class="mm-text">Home</span></a></li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#"><span class="mm-text">Products</span></a>
+                                        <ul class="sub-menu">
+                                            {% for category in categories %}
+                                            <li><a href="{% url 'category_product_list' category.slug %}"><span class="mm-text">{{ category.name }}</span></a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                    <li><a href="#"><span class="mm-text">About Us</span></a></li>
+                                    <li><a href="{% url 'contact' %}"><span class="mm-text">Contact Us</span></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="global-overlay"></div>
+        </header>
+        <!-- Main Header Area End Here -->
+
+        {% block content %}
+        <!-- Content goes here -->
+        {% endblock content %}
+        
+<!-- Begin Footer Area -->
+<footer class="footer-area" data-bg-image="{% static 'images/footer/bg/1-1920x465.jpg' %}">
+    <div class="footer-top section-space-top-100 pb-60">
+        <div class="container">
+            <div class="row">
+                <!-- Company Info -->
+                <div class="col-lg-3">
+                    <div class="footer-widget-item">
+                        <div class="footer-widget-logo">
+                            <a href="{% url 'index' %}">
+                                <img src="{% static 'images/logo/vertologo.png' %}" style="max-width: 50%;" alt="Company Logo">
+                            </a>
+                        </div>
+                        <p class="footer-widget-desc">We turn recycled glass into innovative products, reducing waste and promoting sustainability.</p>
+                        <div class="social-link with-border">
+                            <ul>
+                                <li>
+                                    <a href="#" data-tippy="Facebook" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-tippy="Twitter" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" data-tippy="Instagram" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Useful Links -->
+                <div class="col-lg-3 col-md-6 pt-40">
+                    <div class="footer-widget-item">
+                        <h3 class="footer-widget-title">Useful Links</h3>
+                        <ul class="footer-widget-list-item">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Our Products</a></li>
+                            <li><a href="#">Sustainability Mission</a></li>
+                            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Recycling Information -->
+                <div class="col-lg-3 col-md-6 pt-40">
+                    <div class="footer-widget-item">
+                        <h3 class="footer-widget-title">Recycling Process</h3>
+                        <ul class="footer-widget-list-item">
+                            <li><a href="#">How We Recycle Glass</a></li>
+                            <li><a href="#">Benefits of Recycling</a></li>
+                            <li><a href="#">Sustainability Initiatives</a></li>
+                            <li><a href="#">Our Impact</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-lg-3 pt-40">
+                    <div class="footer-contact-info">
+                        <h3 class="footer-widget-title">Get in Touch</h3>
+                        <a class="number" href="tel://123-456-789">123 456 789</a>
+                        <div class="address">
+                            <ul>
+                                <li>Your Business Address Here</li>
+                                <li>Email: info@yourdomain.com</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="copyright">
+                        <span class="copyright-text">© {% now "Y" %} Your Company Name. Made with <i class="fa fa-heart text-danger"></i> by
+                            <a href="#" rel="noopener" target="_blank">Your Name or Agency</a> 
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Area End Here -->
+
+
+
+<!-- Begin Scroll To Top -->
+<a class="scroll-to-top" href="">
+    <i class="fa fa-angle-double-up"></i>
+</a>
+<!-- Scroll To Top End Here -->
+
+<!-- Global Vendor, plugins JS -->
+<!-- JS Files
+============================================ -->
+<script src="{% static 'js/vendor/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-migrate-3.3.2.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery.waypoints.js' %}"></script>
+<script src="{% static 'js/vendor/modernizr-3.11.2.min.js' %}"></script>
+<script src="{% static 'js/plugins/wow.min.js' %}"></script>
+<script src="{% static 'js/plugins/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'js/plugins/jquery.nice-select.js' %}"></script>
+<script src="{% static 'js/plugins/parallax.min.js' %}"></script>
+<script src="{% static 'js/plugins/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/plugins/tippy.min.js' %}"></script>
+<script src="{% static 'js/plugins/ion.rangeSlider.min.js' %}"></script>
+<script src="{% static 'js/plugins/mailchimp-ajax.js' %}"></script>
+<script src="{% static 'js/plugins/jquery.counterup.js' %}"></script>
+
+<!--Main JS (Common Activation Codes)-->
+<script src="{% static 'js/main.js' %}"></script>
+{% block extra_js %}{% endblock %}
+
+</body>
+</html>

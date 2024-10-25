@@ -1,0 +1,431 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}NFC Shop - Home{% endblock %}
+
+{% block content %}
+<!-- Begin Slider Area -->
+<div class="slider-area">
+    <div class="swiper-container main-slider swiper-arrow with-bg_white">
+        <div class="swiper-wrapper">
+            <!-- Slide 1 -->
+            <div class="swiper-slide animation-style-01">
+                <div class="slide-inner style-1 bg-height" data-bg-image="{% static 'images/slider/bg/1-1.jpg' %}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 order-2 order-lg-1 align-self-center">
+                                <div class="slide-content text-black">
+                                    <span class="offer">Sustainability at Our Core</span>
+                                    <h2 class="title">Transforming Waste into Wonders</h2>
+                                    <p class="short-desc">We craft innovative, eco-friendly products using 100% recycled glass.</p>
+                                    <div class="btn-wrap">
+                                        <a class="btn btn-custom-size xl-size btn-pronia-primary" href="{% url 'product_list' %}">Explore Our Products</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-0 order-1 order-lg-2">
+                                <div class="inner-img">
+                                    <div class="scene fill">
+                                        <div class="expand-width" data-depth="0.2">
+                                            <img src="{% static 'images/slider/inner-img/recycled-glass-product.png' %}" alt="Recycled Glass Product">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="swiper-slide animation-style-02">
+                <div class="slide-inner style-1 bg-height" data-bg-image="{% static 'images/slider/bg/1-1.jpg' %}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 order-2 order-lg-1 align-self-center">
+                                <div class="slide-content text-black">
+                                    <span class="offer">Circular Economy Advocate</span>
+                                    <h2 class="title">Close the Loop on Glass Waste</h2>
+                                    <p class="short-desc">Join us in creating a greener future with our zero-waste, recycled glass products.</p>
+                                    <div class="btn-wrap">
+                                        <a class="btn btn-custom-size xl-size btn-pronia-primary" href="#">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-0 order-1 order-lg-2">
+                                <div class="inner-img">
+                                    <div class="scene fill">
+                                        <div class="expand-width" data-depth="0.2">
+                                            <img src="{% static 'images/slider/inner-img/circular-economy.png' %}" alt="Circular Economy">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="swiper-slide animation-style-03">
+                <div class="slide-inner style-1 bg-height" data-bg-image="{% static 'images/slider/bg/1-1.jpg' %}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6 order-2 order-lg-1 align-self-center">
+                                <div class="slide-content text-black">
+                                    <span class="offer">Innovative Glass Products</span>
+                                    <h2 class="title">Stylish, Sustainable Solutions</h2>
+                                    <p class="short-desc">Discover our range of glass products designed for a sustainable lifestyle.</p>
+                                    <div class="btn-wrap">
+                                        <a class="btn btn-custom-size xl-size btn-pronia-primary" href="{% url 'product_list' %}">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-0 order-1 order-lg-2">
+                                <div class="inner-img">
+                                    <div class="scene fill">
+                                        <div class="expand-width" data-depth="0.2">
+                                            <img src="{% static 'images/slider/inner-img/innovative-glass.png' %}" alt="Innovative Glass">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination d-md-none"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</div>
+<!-- Slider Area End Here -->
+
+
+<!-- Begin Shipping Area -->
+<div class="shipping-area section-space-top-100">
+    <div class="container">
+        <div class="shipping-bg">
+            <div class="row shipping-wrap">
+                <div class="col-lg-4 col-md-6">
+                    <div class="shipping-item">
+                        <div class="shipping-img">
+                            <img src="{% static 'images/shipping/icon/icons8-eco-friendly-96.png' %}" alt="Shipping Icon">
+                        </div>
+                        <div class="shipping-content">
+                            <h2 class="title">Eco-Friendly</h2>
+                            <p class="short-desc mb-0">100% recycled glass to create high-quality products</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-4 mt-md-0">
+                    <div class="shipping-item">
+                        <div class="shipping-img">
+                            <img src="{% static 'images/shipping/icon/icons8-recycle-96.png' %}" alt="Shipping Icon">
+                        </div>
+                        <div class="shipping-content">
+                            <h2 class="title">Circular Economy</h2>
+                            <p class="short-desc mb-0">Supporting the principles of the circular economy</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-4 mt-lg-0">
+                    <div class="shipping-item">
+                        <div class="shipping-img">
+                            <img src="{% static 'images/shipping/icon/icons8-innovation-96.png' %}" alt="Shipping Icon">
+                        </div>
+                        <div class="shipping-content">
+                            <h2 class="title">Innovative Product Line</h2>
+                            <p class="short-desc mb-0">Eco-friendly can be both stylish and practical</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shipping Area End Here -->
+
+<!-- Begin Product Area -->
+<div class="product-area section-space-top-100">
+    <div class="container">
+        <div class="section-title-wrap">
+            <h2 class="section-title mb-0">Our Products</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav product-tab-nav tab-style-1" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="active" id="featured-tab" data-bs-toggle="tab" href="#featured" role="tab" aria-controls="featured" aria-selected="true">
+                            Featured
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a id="bestseller-tab" data-bs-toggle="tab" href="#bestseller" role="tab" aria-controls="bestseller" aria-selected="false">
+                            Promotional
+                        </a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a id="latest-tab" data-bs-toggle="tab" href="#latest" role="tab" aria-controls="latest" aria-selected="false">
+                            New
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="featured" role="tabpanel" aria-labelledby="featured-tab">
+                        <div class="product-item-wrap row">
+                            {% for product in featured_products %}
+                            <div class="col-xl-3 col-md-4 col-sm-6">
+                                <div class="product-item">
+                                    <div class="product-img">
+                                        <a href="{% url 'product_detail' slug=product.slug %}">
+                                            <img class="primary-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            {% if product.images.exists %}
+                                            <img class="secondary-img" src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                                            {% endif %}
+                                        </a>
+                                        <div class="product-add-action">
+                                            <ul>
+                                                <li>
+                                                    <a href="#" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-like"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-look"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-cart"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <a class="product-name" href="{% url 'product_detail' slug=product.slug %}">{{ product.name }}</a>
+                                        <div class="price-box pb-1">
+                                            <span class="new-price">${{ product.price }}</span>
+                                        </div>
+                                        <div class="rating-box">
+                                            <ul>
+                                                {% for i in "12345"|make_list %}
+                                                <li><i class="fa fa-star{% if forloop.counter > product.average_rating|floatformat:"0" %}-o{% endif %}"></i></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="bestseller" role="tabpanel" aria-labelledby="bestseller-tab">
+                        <div class="product-item-wrap row">
+                            {% for product in promo_products %}
+                            <div class="col-xl-3 col-md-4 col-sm-6">
+                                <div class="product-item">
+                                    <div class="product-img">
+                                        <a href="{% url 'product_detail' slug=product.slug %}">
+                                            <img class="primary-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            {% if product.images.exists %}
+                                            <img class="secondary-img" src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                                            {% endif %}
+                                        </a>
+                                        <div class="product-add-action">
+                                            <ul>
+                                                <li>
+                                                    <a href="#" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-like"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-look"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-cart"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <a class="product-name" href="{% url 'product_detail' slug=product.slug %}">{{ product.name }}</a>
+                                        <div class="price-box pb-1">
+                                            <span class="new-price">${{ product.price }}</span>
+                                        </div>
+                                        <div class="rating-box">
+                                            <ul>
+                                                {% for i in "12345"|make_list %}
+                                                <li><i class="fa fa-star{% if forloop.counter > product.average_rating|floatformat:"0" %}-o{% endif %}"></i></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="latest" role="tabpanel" aria-labelledby="latest-tab">
+                        <div class="product-item-wrap row">
+                            {% for product in new_products %}
+                            <div class="col-xl-3 col-md-4 col-sm-6">
+                                <div class="product-item">
+                                    <div class="product-img">
+                                        <a href="{% url 'product_detail' slug=product.slug %}">
+                                            <img class="primary-img" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            {% if product.images.exists %}
+                                            <img class="secondary-img" src="{{ product.images.first.image.url }}" alt="{{ product.name }}">
+                                            {% endif %}
+                                        </a>
+                                        <div class="product-add-action">
+                                            <ul>
+                                                <li>
+                                                    <a href="#" data-tippy="Add to wishlist" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-like"></i>
+                                                    </a>
+                                                </li>
+                                                <li class="quuickview-btn" data-bs-toggle="modal" data-bs-target="#quickModal">
+                                                    <a href="#" data-tippy="Quickview" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-look"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" data-tippy="Add to cart" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                                        <i class="pe-7s-cart"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-content">
+                                        <a class="product-name" href="{% url 'product_detail' slug=product.slug %}">{{ product.name }}</a>
+                                        <div class="price-box pb-1">
+                                            <span class="new-price">${{ product.price }}</span>
+                                        </div>
+                                        <div class="rating-box">
+                                            <ul>
+                                                {% for i in "12345"|make_list %}
+                                                <li><i class="fa fa-star{% if forloop.counter > product.average_rating|floatformat:"0" %}-o{% endif %}"></i></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Begin Banner Area -->
+<div class="banner-area section-space-top-90">
+    <div class="container">
+        <div class="row g-min-30 g-4">
+            {% for category in featured_categories %}
+                {% if forloop.first or forloop.last %}
+                    <div class="col-lg-8">
+                        <div class="banner-item img-hover-effect">
+                            <div class="banner-img">
+                                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                            </div>
+                            <div class="banner-content text-position-left">
+                                <span class="collection">{{ category.name }}</span>
+                                <h3 class="title">{{ category.description|truncatewords:10 }}</h3>
+                                <div class="button-wrap">
+                                    <a class="btn btn-custom-size btn-pronia-primary" href="{% url 'category_product_list' slug=category.slug %}">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="banner-item img-hover-effect">
+                            <div class="banner-img">
+                                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                            </div>
+                            <div class="banner-content text-position-center">
+                                <span class="collection">{{ category.name }}</span>
+                                <h3 class="title">{{ category.description|truncatewords:5 }}</h3>
+                                <div class="button-wrap">
+                                    <a class="btn btn-custom-size lg-size btn-pronia-primary" href="{% url 'category_product_list' slug=category.slug %}">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Banner Area End Here -->
+
+<!-- Begin Testimonial Area -->
+<div class="testimonial-area section-space-top-90 section-space-bottom-95">
+    <div class="container-fluid">
+        <div class="testimonial-bg" data-bg-image="{% static 'images/testimonial/bg/1-1-1820x443.jpg' %}">
+            <div class="section-title-wrap">
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-desc mb-0">Read testimonials from our satisfied customers</p>
+            </div>
+        </div>
+        <div class="container custom-space">
+            <div class="swiper-container testimonial-slider with-bg">
+                <div class="swiper-wrapper">
+                    {% for review in featured_reviews %}
+                    <div class="swiper-slide testimonial-item">
+                        <div class="user-info mb-3">
+                            <div class="user-shape-wrap">
+                            </div>
+                            <div class="user-content text-charcoal">
+                                <h4 class="user-name mb-1">{{ review.name }}</h4>
+                                <span class="user-occupation">Customer</span>
+                            </div>
+                        </div>
+                        <p class="user-comment mb-6">{{ review.content|truncatewords:20 }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination without-absolute"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial Area End Here -->
+
+<!-- Begin Brand Area -->
+<div class="brand-area section-space-bottom-100">
+    <div class="container">
+        <div class="brand-bg" data-bg-image="{% static 'images/brand/bg/1-1170x300.jpg' %}">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="swiper-container brand-slider">
+                        <div class="swiper-wrapper">
+                            {% for brand in brands %}
+                            <div class="swiper-slide">
+                                <a class="brand-item" href="{{ brand.url }}">
+                                    <img src="{{ brand.logo.url }}" alt="{{ brand.name }}">
+                                </a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Brand Area End Here -->
+{% endblock %}
