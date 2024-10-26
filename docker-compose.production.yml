@@ -1,9 +1,8 @@
-# second_app/docker-compose.yml
-version: '3'
 services:
   web:
     build: .
-    command: gunicorn your_app.wsgi:application --bind 0:8001  # Note different port
+    container_name: verto-web-1
+    command: gunicorn verto.wsgi:application --bind 0:8001
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
@@ -15,20 +14,19 @@ services:
       - db
   db:
     image: postgres:13
+    container_name: verto-db-1
     volumes:
       - postgres_data:/var/lib/postgresql/data
     env_file:
       - .env
   nginx:
     build: ./nginx
+    container_name: verto-nginx-1
     volumes:
       - static_volume:/app/staticfiles
       - media_volume:/app/media
-      - /etc/letsencrypt:/etc/letsencrypt
-      - /var/lib/letsencrypt:/var/lib/letsencrypt
     ports:
-      - "81:80"    # Note different ports
-      - "444:443"  # Note different ports
+      - "81:80"  # This will make it accessible at IP:81
     depends_on:
       - web
 volumes:
